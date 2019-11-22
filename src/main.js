@@ -10,6 +10,7 @@ import 'styles/iconfont.css'
 
 
 Vue.config.productionTip = false
+fastClick.attach(document.body)
 
 /* eslint-disable no-new */
 // 这个是根实例，挂载到index.html上
