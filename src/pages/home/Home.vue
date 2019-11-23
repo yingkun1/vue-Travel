@@ -36,12 +36,12 @@ export default {
     },
     methods:{
         getHomeInfo(){
-            console.log("getHomeInfo被调用了")
+            // console.log("getHomeInfo被调用了")
             axios.get('/static/mock/index.json')
                 .then(res=>this.getHomeInfoSync(res))
         },
         getHomeInfoSync(res){
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data.ret && res.data.data){
                 this.recommendList = res.data.data.recommendList;
                 this.swiperList = res.data.data.swiperList;
@@ -52,7 +52,7 @@ export default {
         }
     },
     mounted(){
-        console.log("页面被挂载了")
+        // console.log("页面被挂载了")
         this.getHomeInfo()
     }
 }
