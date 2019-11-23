@@ -2,8 +2,8 @@
     <div>
         <city-header></city-header>
         <city-search></city-search>
-        <city-list :cities="cities" :hotCities="hotCities"></city-list>
-        <city-alphabet :cities="cities"></city-alphabet>
+        <city-list :cities="cities" :hotCities="hotCities" :letter="letter" ></city-list>
+        <city-alphabet :cities="cities" @change="change" @changeLetter="changeLetter"></city-alphabet>
     </div>
 </template>
 
@@ -25,7 +25,8 @@ export default {
     data(){
         return {
             cities:{},
-            hotCities:[]
+            hotCities:[],
+            letter:''
         }
     },
     methods:{
@@ -34,14 +35,22 @@ export default {
                 .then(res => this.getCityInfoSync(res))
         },
         getCityInfoSync(res){
-            console.log(res)
+            // console.log(res)
             res = res.data
             if(res.ret && res.data){
                 this.cities = res.data.cities
                 this.hotCities = res.data.hotCities
-                console.log("cities:"+this.cities)
-                console.log("hotCities"+this.hotCities)
+                // console.log("cities:"+this.cities)
+                // console.log("hotCities"+this.hotCities)
             }
+        },
+        change(letter){
+            // console.log("从List组件中带出来的值为:"+key)
+            this.letter = letter
+        },
+        changeLetter(letter){
+            // console.log("滑动带出来的值为："+letter)
+            this.letter = letter
         }
     },
     mounted(){
