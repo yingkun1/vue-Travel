@@ -16,62 +16,18 @@
 <script>
 export default {
     name:'HomeIcons',
+    props:{
+        list:Array
+    },
     data(){
         return {
             swiperOption:{},
-            iconList:[
-                {
-                    id:'001',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'热门景点'
-                },
-                {
-                    id:'002',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'滑雪季'
-                },
-                {
-                    id:'003',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'泡温泉'
-                },
-                {
-                    id:'004',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'动植物园'
-                },
-                {
-                    id:'005',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'热门景点'
-                },
-                {
-                    id:'006',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'热门景点'
-                },
-                {
-                    id:'007',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'热门景点'
-                },
-                {
-                    id:'008',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'热门景点'
-                },
-                {
-                    id:'009',
-                    imgUrl:'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-                    desc:'一日游'
-                },
-            ]
         }
     },
     computed:{
         pages(){
             const pages = []
-            this.iconList.forEach((item,index)=>{
+            this.list.forEach((item,index)=>{
                 const page = Math.floor(index/8)
                 //对于pages[0]也是一个数组，假如还没有创建该数组，先进行创建，如果存在，就直接往里面添加///元素
                 if(!pages[page]){

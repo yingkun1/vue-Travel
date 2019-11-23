@@ -2,7 +2,7 @@
     <div>
         <div class="recommend-title">热销推荐</div>
         <ul class="item-wrapper">
-            <li class="item border-bottom " v-for="item of recommendList" :key="item.id">
+            <li class="item border-bottom " v-for="item of list" :key="item.id">
                 <img class="item-img" :src="item.imgUrl" alt="">
                 <div class="item-info">
                     <p class="item-title">{{item.title}}</p>
@@ -17,40 +17,11 @@
 <script>
 export default {
     name:'HomeRecommend',
+    props:{
+        list:Array
+    },
     data(){
         return {
-                recommendList:[
-                {
-                    id:'0001',
-                    imgUrl:'https://imgs.qunarzz.com/vs_ceph_vs_tts/f660af7d-9607-4329-a5e4-9a335af2f8c2.jpg_r_480x320x90_c38b894c.jpg',
-                    title:'大连亚圣海洋世界',
-                    desc:'浪漫大连首站,浪漫的海洋主题乐园'
-                },
-                {
-                    id:'0002',
-                    imgUrl:'https://imgs.qunarzz.com/vs_ceph_vs_tts/f660af7d-9607-4329-a5e4-9a335af2f8c2.jpg_r_480x320x90_c38b894c.jpg',
-                    title:'大连亚圣海洋世界',
-                    desc:'浪漫大连首站,浪漫的海洋主题乐园'
-                },
-                {
-                    id:'0003',
-                    imgUrl:'https://imgs.qunarzz.com/vs_ceph_vs_tts/f660af7d-9607-4329-a5e4-9a335af2f8c2.jpg_r_480x320x90_c38b894c.jpg',
-                    title:'大连亚圣海洋世界',
-                    desc:'浪漫大连首站,浪漫的海洋主题乐园'
-                },
-                {
-                    id:'0004',
-                    imgUrl:'https://imgs.qunarzz.com/vs_ceph_vs_tts/f660af7d-9607-4329-a5e4-9a335af2f8c2.jpg_r_480x320x90_c38b894c.jpg',
-                    title:'大连亚圣海洋世界',
-                    desc:'浪漫大连首站,浪漫的海洋主题乐园'
-                },
-                {
-                    id:'0005',
-                    imgUrl:'https://imgs.qunarzz.com/vs_ceph_vs_tts/f660af7d-9607-4329-a5e4-9a335af2f8c2.jpg_r_480x320x90_c38b894c.jpg',
-                    title:'大连亚圣海洋世界',
-                    desc:'浪漫大连首站,浪漫的海洋主题乐园'
-                }
-            ]
         }
     }
 
