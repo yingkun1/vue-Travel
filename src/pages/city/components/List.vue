@@ -5,14 +5,15 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">北京</div>
+                        <!-- <div class="button">{{this.$store.state.city}}</div> -->
+                        <div class="button">{{this.currentCity}}</div>
                     </div>
                 </div>
             </div>
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+                    <div class="button-wrapper" v-for="item of hotCities" :key="item.id" @click="handleClickCity(item.name)">
                         <div class="button">{{item.name}}</div>
                     </div>
                 </div>
@@ -21,7 +22,7 @@
                 <div class="title border-topbottom" >
                     {{key}}</div>
                 <div class="item-list">
-                    <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">
+                    <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id" @click="handleClickCity(innerItem.name)">
                         {{innerItem.name}}
                     </div>
                 </div>
@@ -32,15 +33,13 @@
 
 <script>
 import BScroll from 'better-scroll'
+import {mapState, mapMutations} from 'vuex'
 export default {
     name:'CityList',
     props:{
         cities:Object,
         hotCities:Array,
         letter:String
-    },
-    mounted(){
-        this.scroll =  new BScroll(this.$refs.wrapper);
     },
     watch:{
         letter(){
@@ -51,7 +50,30 @@ export default {
             }
             // console.log("letter发生了变化:"+this.letter)
         }
-    }
+    },
+    computed:{
+        // ...mapState(['city'])
+        ...mapState({
+            currentCity:'city'
+        }),
+    },
+    methods:{
+        // handleClickCity(e){
+        //     this.$store.dispatch("changeCity",e.target.innerText)
+        //     // console.log(e.target.innerText)
+        // }
+        handleClickCity(city){
+            // console.log("点击后得到的城市:"+city)
+            // this.$store.dispatch("changeCity",city)
+            // this.$store.commit("changeCity",city)
+            this.changeCity(city)
+            this.$router.push('/')
+        },
+        ...mapMutations(['changeCity'])
+    },
+    mounted(){
+        this.scroll =  new BScroll(this.$refs.wrapper);
+    },
 }
 </script>
 
