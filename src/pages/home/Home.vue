@@ -15,6 +15,7 @@ import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
     name:'Home',
@@ -30,13 +31,14 @@ export default {
             iconList:[],
             recommendList:[],
             swiperList:[],
-            weekendList:[]
+            weekendList:[],
+            lastCity:''
         }
     },
     methods:{
         getHomeInfo(){
             // console.log("getHomeInfo被调用了")
-            axios.get('/static/mock/index.json')
+            axios.get('/static/mock/index.json?city' + this.city )
                 .then(res=>this.getHomeInfoSync(res))
         },
         getHomeInfoSync(res){
@@ -50,9 +52,23 @@ export default {
             
         }
     },
+    computed:{
+        ...mapState(['city'])
+    },
     mounted(){
         // console.log("页面被挂载了")
+        this.lastCity = this.city
+        console.log('mounted')
         this.getHomeInfo()
+    },
+    // 当我们使用keep-alive时，会尽可能的使用本地缓存，但有时我们又在某些位置不想使用本地缓存
+    // 我们可以使用activated生命周期函数
+    activated(){
+        if(this.lastCity !== this.city){
+            this.lastCity = this.city
+            this.getHomeInfo()
+        }
+        console.log("activated")
     }
 }
 </script>
