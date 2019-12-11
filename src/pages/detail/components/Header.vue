@@ -33,9 +33,9 @@ export default {
             console.log("scroll")
             const top = document.documentElement.scrollTop;
             if(top>50 && top<130){
-                let opacity = top/140
+                let opacity = top/100
                 this.opacityStyle = {
-                    opacity:opacity
+                    opacity:opacity>=1?1:opacity
                 }
                 this.showAbs = false;
 
@@ -70,6 +70,7 @@ export default {
             font-size : .4rem
 
     .header-fixed
+        z-index: 6
         position fixed
         top : 0
         left : 0
