@@ -1,6 +1,6 @@
 <template>
     <div class="container" @click="handleGallaryClick">
-        <dir class="wrapper">
+        <div class="wrapper">
             <!-- <swiper :options="swiperOption" v-if="showSwiper"> -->
             <swiper :options="swiperOption">
                 <!-- slides -->
@@ -10,7 +10,7 @@
                 <!-- Optional controls -->
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
-        </dir>
+        </div>
     </div>
 </template>
 
@@ -31,6 +31,7 @@ export default {
         handleGallaryClick(){
             this.$emit('close')
         }
+        
     },
     props:{
         imgs:{
