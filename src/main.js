@@ -6,6 +6,7 @@ import router from './router'  //vue项目的路由配置内容
 import store from './store'    //导入store
 import fastClick from 'fastclick'     //解决移动端300ms延时的问题
 import VueAwesomeSwiper from 'vue-awesome-swiper' //轮播图插件
+import 'babel-polyfill'
 import 'styles/reset.css'    //解决边距的问题
 import 'styles/border.css'   //解决一像素边框的问题
 import 'styles/iconfont.css'
